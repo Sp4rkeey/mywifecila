@@ -1,60 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Beloved, Cila ❤️</title>
+
+<title>Hogwarts Letter for Cila</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-
 :root {
-  --dark: #19080e;
-  --maroon: #4b1025;
-  --wine: #701b38;
-  --pink: #d99aaa;
-  --cream: #fff0e9;
+  --night: #080d19;
+  --navy: #101a2d;
+  --blue: #192943;
+  --gold: #d4b36b;
+  --light-gold: #f0d99b;
+  --parchment: #e9d7ae;
+  --ink: #34251b;
+  --burgundy: #671d32;
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(135deg, #19080e, #35101f, #57182f);
-  color: var(--cream);
-  font-family: 'Poppins', sans-serif;
   min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, #263751 0%, #101a2d 40%, #080d19 100%);
+  color: #f2e6c9;
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
 }
 
 button {
-  cursor: pointer;
-  border: none;
   font-family: inherit;
+  cursor: pointer;
 }
 
 .page {
   display: none;
   min-height: 100vh;
   padding: 35px 18px;
-  animation: appear .7s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .page.active {
   display: block;
+  animation: appear 1s ease;
 }
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MAGICAL BACKGROUND */
+
+#magic {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  color: #f5d98f;
+  opacity: 0;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+  50% {
+    opacity: .8;
+    transform: scale(1.3);
+  }
 }
 
 .container {
-  max-width: 850px;
+  max-width: 900px;
   margin: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .center {
@@ -62,206 +104,284 @@ button {
 }
 
 h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cinzel', serif;
+  color: var(--light-gold);
 }
 
 h1 {
-  font-size: clamp(34px, 7vw, 55px);
-  color: #f4c6d2;
-  margin-bottom: 15px;
+  font-size: clamp(30px, 7vw, 52px);
+  line-height: 1.3;
+  margin: 15px 0;
+  text-shadow: 0 0 20px #d4b36b44;
 }
 
 h2 {
-  color: #f4c6d2;
-  font-size: 32px;
+  font-size: clamp(23px, 5vw, 32px);
   margin-bottom: 15px;
 }
 
-p {
-  line-height: 1.9;
-  font-size: 14px;
-  color: #f7e5e8;
+h3 {
+  font-size: 20px;
 }
 
-.small {
-  font-size: 12px;
-  color: #dbaab9;
-  letter-spacing: 2px;
+p {
+  font-size: 19px;
+  line-height: 1.65;
+  color: #e8dcc1;
+}
+
+.subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
   text-transform: uppercase;
 }
 
-.card {
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,210,225,.17);
-  border-radius: 22px;
-  padding: 25px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px auto;
+  max-width: 400px;
+  color: var(--gold);
 }
 
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+  flex: 1;
+}
+
+.divider::after {
+  transform: rotate(180deg);
+}
+
+/* CARDS */
+
+.card {
+  background:
+    linear-gradient(145deg, rgba(34,48,68,.92), rgba(13,21,35,.95));
+  border: 1px solid #c7a75c66;
+  border-radius: 5px;
+  padding: 28px;
+  box-shadow: 0 15px 45px #0008;
+  position: relative;
+}
+
+.card::before {
+  content: "✦";
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+.card::after {
+  content: "✦";
+  position: absolute;
+  bottom: 9px;
+  right: 12px;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+/* BUTTONS */
+
 .main-button {
-  background: linear-gradient(135deg, #d99aaa, #a94c6a);
-  color: #260b15;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-weight: 600;
-  margin: 8px 5px;
+  padding: 13px 25px;
+  background: linear-gradient(135deg, #b68b45, #e5ca85);
+  color: #201a12;
+  border: 1px solid #f3dda0;
+  border-radius: 3px;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin: 12px 5px;
   transition: .3s;
 }
 
 .main-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 20px #d99aaa44;
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px #d4b36b66;
 }
 
 .back-button {
+  padding: 9px 17px;
+  border: 1px solid var(--gold);
   background: transparent;
-  color: #f4c6d2;
-  border: 1px solid #d99aaa;
-  padding: 9px 18px;
-  border-radius: 25px;
+  color: var(--light-gold);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
   margin-bottom: 25px;
 }
 
 input {
+  display: block;
   width: 100%;
-  max-width: 300px;
+  max-width: 290px;
+  margin: 20px auto 10px;
   padding: 14px;
-  border-radius: 30px;
-  border: 1px solid #d99aaa;
-  background: #fff0e9;
-  color: #35101f;
+  background: #e9d7ae;
+  color: #302216;
+  border: 2px solid #b68b45;
   text-align: center;
+  font-size: 19px;
+  letter-spacing: 5px;
   outline: none;
-  font-size: 16px;
-  letter-spacing: 3px;
-  margin: 18px 0 10px;
 }
+
+/* LOGIN */
 
 .hero {
-  padding-top: 12vh;
+  padding-top: 10vh;
 }
 
-.hero-image {
-  width: 155px;
-  height: 155px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #d99aaa;
-  margin: 25px auto;
-  display: block;
-  box-shadow: 0 0 30px #d99aaa55;
+.crest {
+  width: 115px;
+  height: 135px;
+  margin: 20px auto;
+  border: 2px solid var(--gold);
+  border-radius: 55% 55% 12px 12px;
+  background: linear-gradient(160deg, #74253a, #1c2436);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  box-shadow: 0 0 30px #d4b36b33;
 }
+
+.login-card {
+  max-width: 540px;
+  margin: 20px auto;
+}
+
+/* HOME */
 
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 17px;
-  margin-top: 30px;
+  gap: 18px;
+  margin-top: 35px;
 }
 
 .menu-card {
-  text-align: left;
+  min-height: 190px;
+  text-align: center;
   cursor: pointer;
-  transition: .3s;
+  transition: .4s;
 }
 
 .menu-card:hover {
-  transform: translateY(-6px);
-  background: rgba(255,255,255,.12);
+  transform: translateY(-8px);
+  border-color: var(--light-gold);
+  background: #263954;
 }
 
-.menu-card h3 {
-  color: #f4c6d2;
-  font-size: 23px;
-  margin-bottom: 9px;
+.menu-icon {
+  font-size: 38px;
+  margin-bottom: 15px;
 }
 
-.menu-card .emoji {
-  font-size: 32px;
-  margin-bottom: 12px;
+/* LETTER PAPER */
+
+.parchment {
+  background:
+    linear-gradient(rgba(240,222,182,.96), rgba(224,201,157,.96));
+  color: var(--ink);
+  padding: 35px;
+  border: 8px double #947343;
+  box-shadow: 0 15px 40px #0008;
+  position: relative;
 }
 
-.section-photo {
+.parchment h2 {
+  color: #4c3020;
+}
+
+.parchment p {
+  color: #3c2a1d;
+  font-size: 20px;
+  line-height: 1.75;
+}
+
+.parchment .signature {
+  color: #70243a;
+}
+
+.photo {
   width: 100%;
-  max-height: 400px;
+  max-height: 390px;
   object-fit: cover;
-  border-radius: 18px;
+  border: 5px solid #c5a76c;
+  outline: 1px solid #61492b;
   margin: 20px 0;
-  border: 1px solid #d99aaa66;
 }
 
 .story-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, .75fr);
-  gap: 22px;
+  grid-template-columns: 1fr .8fr;
+  gap: 25px;
   align-items: center;
 }
 
 .story-layout img {
   width: 100%;
-  height: 330px;
+  height: 340px;
   object-fit: cover;
-  border-radius: 18px;
-  border: 2px solid #d99aaa66;
+  border: 5px solid #c5a76c;
+  outline: 1px solid #61492b;
+}
+
+.signature {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 25px;
 }
 
 .message {
   white-space: pre-line;
 }
 
+/* GALLERY */
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
+  gap: 15px;
+  margin-top: 25px;
 }
 
 .gallery img {
   width: 100%;
-  height: 190px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid #d99aaa77;
-  transition: .3s;
+  border: 4px solid #b9975c;
+  transition: .4s;
 }
 
 .gallery img:hover {
-  transform: scale(1.03);
+  transform: scale(1.04) rotate(1deg);
 }
 
-.signature {
-  color: #f4b9ca;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 22px;
-  margin-top: 25px;
-}
-
-.heart {
-  position: fixed;
-  bottom: -30px;
-  color: #e99ab2;
-  pointer-events: none;
-  animation: floatUp 6s linear forwards;
-  z-index: 10;
-}
-
-@keyframes floatUp {
-  to {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
+/* FOOTER */
 
 footer {
   text-align: center;
-  padding: 35px 10px 10px;
-  color: #dbaab9;
-  font-size: 11px;
+  padding: 35px 10px 15px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
 }
 
-@media(max-width: 600px) {
+@media(max-width: 650px) {
   .story-layout {
     grid-template-columns: 1fr;
   }
@@ -270,8 +390,12 @@ footer {
     height: 300px;
   }
 
-  .page {
-    padding: 25px 15px;
+  .parchment {
+    padding: 23px;
+  }
+
+  .card {
+    padding: 23px;
   }
 }
 </style>
@@ -279,105 +403,145 @@ footer {
 
 <body>
 
-<!-- PASSWORD PAGE -->
+<div id="magic"></div>
+
+<!-- LOGIN -->
+
 <section id="login" class="page active">
-  <div class="container center hero">
-    <p class="small">A little surprise for someone special</p>
-    <h1>For My Beloved, Cila</h1>
+<div class="container center hero">
 
-    <img class="hero-image" src="images/cila.jpg" alt="Cila">
+<p class="subtitle">The Wizarding World Awaits</p>
 
-    <div class="card">
-      <h2>Welcome, My Love ♡</h2>
-      <p>
-        I made something special just for you.
-        But before you enter, there's one little secret
-        you need to know.
-      </p>
+<div class="crest">⚡</div>
 
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter our secret date"
-        maxlength="6"
-        inputmode="numeric"
-      >
+<h1>Hogwarts School<br>of Witchcraft & Wizardry</h1>
 
-      <br>
+<div class="divider">✧</div>
 
-      <button class="main-button" onclick="unlock()">
-        Open My Heart ❤️
-      </button>
+<div class="card login-card">
+<h2>A Special Letter for Cila</h2>
 
-      <p id="error" style="color:#ff9aaa;margin-top:10px;"></p>
-    </div>
-  </div>
+<p>
+A mysterious letter has arrived for you.
+Before opening it, you must prove that
+you know the secret of our little world.
+</p>
+
+<input
+id="password"
+type="password"
+placeholder="Secret Date"
+maxlength="6"
+inputmode="numeric"
+>
+
+<button class="main-button" onclick="unlock()">
+OPEN THE LETTER ✦
+</button>
+
+<p id="error" style="color:#f0a1a1;font-size:15px;"></p>
+</div>
+
+<footer>Delivered by Owl Post · A Letter Made with Love</footer>
+
+</div>
 </section>
 
-<!-- HOME PAGE -->
+
+<!-- HOME -->
+
 <section id="home" class="page">
-  <div class="container">
-    <div class="center" style="padding-top:35px;">
-      <p class="small">To the girl who makes my world beautiful</p>
-      <h1>Hello, My Cila ♡</h1>
-      <p>
-        There are a thousand things I want to tell you.
-        So I made this little place to keep some of them.
-      </p>
-    </div>
+<div class="container">
 
-    <div class="menu-grid">
-      <div class="card menu-card" onclick="showPage('birthday')">
-        <div class="emoji">🎂</div>
-        <h3>Happy Birthday</h3>
-        <p>A special letter for your special day.</p>
-      </div>
+<div class="center" style="padding-top:35px;">
 
-      <div class="card menu-card" onclick="showPage('anniversary')">
-        <div class="emoji">❤️</div>
-        <h3>Our 4th Month</h3>
-        <p>Four months of us, and many more to come.</p>
-      </div>
+<p class="subtitle">Welcome to Your Magical World</p>
 
-      <div class="card menu-card" onclick="showPage('sempro')">
-        <div class="emoji">🎓</div>
-        <h3>Congratulations!</h3>
-        <p>A little appreciation for your hard work.</p>
-      </div>
-    </div>
+<div class="crest">🪄</div>
 
-    <div class="card center" style="margin-top:20px;">
-      <p class="small">One more thing...</p>
-      <h2>A Letter From Me</h2>
-      <p>
-        There's something I haven't said enough.
-        Maybe you should open this one too.
-      </p>
-      <button class="main-button" onclick="showPage('final')">
-        Open My Last Letter 💌
-      </button>
-    </div>
+<h1>Dear CilaMyForever</h1>
 
-    <footer>Made with love, just for you ♡</footer>
-  </div>
+<div class="divider">✧</div>
+
+<p>
+Some stories are written with ink.
+Ours is written with memories, love,
+and a little bit of magic.
+</p>
+
+<p style="margin-top:10px;color:#d4b36b;">
+Choose a chapter of our story.
+</p>
+
+</div>
+
+<div class="menu-grid">
+
+<div class="card menu-card" onclick="showPage('birthday')">
+<div class="menu-icon">🎂</div>
+<h3>The Birthday Spell</h3>
+<p>A magical wish for your special day.</p>
+</div>
+
+<div class="card menu-card" onclick="showPage('anniversary')">
+<div class="menu-icon">❤️</div>
+<h3>Our Magical Story</h3>
+<p>Four months of our little universe.</p>
+</div>
+
+<div class="card menu-card" onclick="showPage('sempro')">
+<div class="menu-icon">🏆</div>
+<h3>The Achievement</h3>
+<p>A celebration of your hard work.</p>
+</div>
+
+</div>
+
+<div class="card center" style="margin-top:25px;">
+<p class="subtitle">A Secret Chapter</p>
+<h2 style="margin-top:12px;">The Last Letter</h2>
+<p>
+A letter that comes straight from my heart.
+Perhaps the most important one.
+</p>
+
+<button class="main-button" onclick="showPage('final')">
+BREAK THE SEAL 💌
+</button>
+</div>
+
+<footer>Hogwarts Archives · Made Especially for Cila ♡</footer>
+
+</div>
 </section>
 
-<!-- BIRTHDAY PAGE -->
+
+<!-- BIRTHDAY -->
+
 <section id="birthday" class="page">
-  <div class="container">
-    <button class="back-button" onclick="showPage('home')">← Back</button>
+<div class="container">
 
-    <div class="center">
-      <p class="small">19 October 2004</p>
-      <h1>Happy Early Birthday!</h1>
-      <p>To the most beautiful girl in my world. ♡</p>
-    </div>
+<button class="back-button" onclick="showPage('home')">
+← RETURN TO THE GREAT HALL
+</button>
 
-    <div class="card" style="margin-top:25px;">
-      <div class="story-layout">
-        <div>
-          <h2>For You, Cila</h2>
-          <p class="message">
+<div class="center">
+<p class="subtitle">A Celebration of Your Existence</p>
+<h1>The Birthday Spell</h1>
+<p>19 October 2004</p>
+</div>
+
+<div class="parchment" style="margin-top:30px;">
+
+<div class="center">
+<h2>To My Dearest Cila,</h2>
+<div class="divider">✧</div>
+</div>
+
+<div class="story-layout">
+
+<div>
+<p class="message">
 Happy birthday in advance, my love!
 
 I know your birthday hasn't arrived yet, but I wanted to give you this little surprise before I leave on October 16.
@@ -393,36 +557,46 @@ Never doubt how special you are. You deserve so much love, and I hope I can keep
 Keep growing, keep shining, and never stop believing in yourself.
 
 I love you, birthday girl. ❤️
-          </p>
-        </div>
+</p>
+</div>
 
-        <img src="images/cila.jpg" alt="My birthday girl">
-      </div>
-    </div>
+<img src="images/cila.jpg" alt="Cila">
 
-    <div class="center">
-      <p class="signature">With all my love, Fadel ♡</p>
-    </div>
-  </div>
+</div>
+
+<p class="signature">With all my love, Fadel ♡</p>
+
+</div>
+
+</div>
 </section>
 
-<!-- ANNIVERSARY PAGE -->
+
+<!-- ANNIVERSARY -->
+
 <section id="anniversary" class="page">
-  <div class="container">
-    <button class="back-button" onclick="showPage('home')">← Back</button>
+<div class="container">
 
-    <div class="center">
-      <p class="small">26 June 2026 — Our Beginning</p>
-      <h1>Happy 4 Months, My Love</h1>
-      <p>Four months, one beautiful story, and two hearts.</p>
-    </div>
+<button class="back-button" onclick="showPage('home')">
+← RETURN TO THE GREAT HALL
+</button>
 
-    <div class="card" style="margin-top:25px;">
-      <img class="section-photo" src="images/anniversary.jpg" alt="Our memory">
+<div class="center">
+<p class="subtitle">A Story Written in the Stars</p>
+<h1>Our Magical Story</h1>
+<p>26 June 2026 — Our Beginning</p>
+</div>
 
-      <h2>Four Months of Us</h2>
+<div class="parchment" style="margin-top:30px;">
 
-      <p class="message">
+<div class="center">
+<h2>Happy 4 Months, My Love</h2>
+<div class="divider">✧</div>
+</div>
+
+<img class="photo" src="images/anniversary.jpg" alt="Our memories">
+
+<p class="message">
 Happy fourth month anniversary, Cila!
 
 It's crazy how four months can hold so many memories, little moments, laughter, and feelings that are difficult to put into words.
@@ -436,48 +610,60 @@ Thank you for choosing me and allowing me to be part of your life.
 Four months down, hopefully a lifetime to go.
 
 I still choose you, Cila. Today, tomorrow, and every day after that. ❤️
-      </p>
+</p>
 
-      <div class="center">
-        <p class="signature">You are still my favorite person.</p>
-      </div>
-    </div>
+<p class="signature">You are my favorite kind of magic.</p>
 
-    <div class="center" style="margin-top:30px;">
-      <h2>Our Little Memories 📸</h2>
-      <p>Some moments that I never want to forget.</p>
-    </div>
+</div>
 
-    <div class="gallery">
-      <img src="images/bucin1.jpg" alt="Our memory 1">
-      <img src="images/bucin2.jpg" alt="Our memory 2">
-      <img src="images/bucin3.jpg" alt="Our memory 3">
-      <img src="images/bucin4.jpg" alt="Our memory 4">
-      <img src="images/bucin5.jpg" alt="Our memory 5">
-    </div>
+<div class="center" style="margin-top:35px;">
+<p class="subtitle">The Pensieve of Our Memories</p>
+<h2>Our Little Moments 📸</h2>
+<p>Memories I wish I could relive forever.</p>
+</div>
 
-    <div class="center">
-      <p class="signature">Forever grateful for us. ♡</p>
-    </div>
-  </div>
+<div class="gallery">
+<img src="images/bucin1.jpg" alt="Memory 1">
+<img src="images/bucin2.jpg" alt="Memory 2">
+<img src="images/bucin3.jpg" alt="Memory 3">
+<img src="images/bucin4.jpg" alt="Memory 4">
+<img src="images/bucin5.jpg" alt="Memory 5">
+</div>
+
+<div class="center">
+<p class="signature">Forever grateful for us. ♡</p>
+</div>
+
+</div>
 </section>
 
-<!-- SEMPRO PAGE -->
+
+<!-- SEMPRO -->
+
 <section id="sempro" class="page">
-  <div class="container">
-    <button class="back-button" onclick="showPage('home')">← Back</button>
+<div class="container">
 
-    <div class="center">
-      <p class="small">A new achievement unlocked</p>
-      <h1>Congratulations, My Girl! 🎓</h1>
-      <p>You did it, and I'm so proud of you.</p>
-    </div>
+<button class="back-button" onclick="showPage('home')">
+← RETURN TO THE GREAT HALL
+</button>
 
-    <div class="card" style="margin-top:25px;">
-      <div class="story-layout">
-        <div>
-          <h2>You Deserve This!</h2>
-          <p class="message">
+<div class="center">
+<p class="subtitle">Another Achievement Unlocked</p>
+<h1>The Achievement</h1>
+<p>For the girl who never stops trying.</p>
+</div>
+
+<div class="parchment" style="margin-top:30px;">
+
+<div class="center">
+<h2>Congratulations, My Girl!</h2>
+<div class="divider">✧</div>
+</div>
+
+<div class="story-layout">
+
+<div>
+<p class="message">
 Congratulations on your seminar proposal, Cila!
 
 I know this journey hasn't always been easy. There were probably moments when you felt tired, overwhelmed, or even doubted yourself.
@@ -495,35 +681,44 @@ Keep going, my love. I'll always be cheering for you, even from a distance.
 You did amazing, and you deserve to celebrate this moment.
 
 I'm so proud of you, Cila. ❤️
-          </p>
-        </div>
+</p>
+</div>
 
-        <img src="images/sempro.jpg" alt="Cila's achievement">
-      </div>
-    </div>
+<img src="images/sempro.jpg" alt="Cila's achievement">
 
-    <div class="center">
-      <p class="signature">Your number one supporter, Fadel ♡</p>
-    </div>
-  </div>
+</div>
+
+<p class="signature">Your number one supporter, Fadel ♡</p>
+
+</div>
+</div>
 </section>
 
+
 <!-- FINAL LETTER -->
+
 <section id="final" class="page">
-  <div class="container">
-    <button class="back-button" onclick="showPage('home')">← Back</button>
+<div class="container">
 
-    <div class="center">
-      <p class="small">A letter from the bottom of my heart</p>
-      <h1>Before You Go...</h1>
-    </div>
+<button class="back-button" onclick="showPage('home')">
+← RETURN TO THE GREAT HALL
+</button>
 
-    <div class="card" style="margin-top:25px;">
-      <img class="section-photo" src="images/anniversary.jpg" alt="Us together">
+<div class="center">
+<p class="subtitle">The Most Important Chapter</p>
+<h1>The Last Letter</h1>
+</div>
 
-      <h2>To My Cila,</h2>
+<div class="parchment" style="margin-top:30px;">
 
-      <p class="message">
+<div class="center">
+<h2>To My Cila,</h2>
+<div class="divider">✧</div>
+</div>
+
+<img class="photo" src="images/anniversary.jpg" alt="Our picture">
+
+<p class="message">
 I don't know how many times I've told you that I love you, but I hope you never get tired of hearing it.
 
 I know I can't promise that every day will be perfect. I can't promise that we'll never argue or that everything will always go according to plan.
@@ -539,30 +734,46 @@ You are loved. You are appreciated. And you mean more to me than words can expla
 Thank you for being my favorite part of this story.
 
 No matter how far life takes us, I hope we never stop choosing each other.
-      </p>
+</p>
 
-      <div class="center">
-        <img class="hero-image" src="images/cila.jpg" alt="Cila">
+<div class="center">
 
-        <h2 style="margin-top:25px;">CilaMyForever ❤️</h2>
+<img class="photo" style="max-width:210px;height:210px;border-radius:50%;object-fit:cover;" src="images/cila.jpg" alt="Cila">
 
-        <p class="signature">
-          I love you, my girl until the end of my life.
-        </p>
+<h2 style="margin-top:20px;">CilaMyForever ❤️</h2>
 
-        <p style="margin-top:15px;">— Your future, Fadel.</p>
-      </div>
-    </div>
+<p class="signature">
+I love you, my girl until the end of my life.
+</p>
 
-    <div class="center" style="margin-top:25px;">
-      <button class="main-button" onclick="showPage('home')">
-        Back to Our Memories ♡
-      </button>
-    </div>
-  </div>
+<p style="margin-top:15px;">
+— Your future, Fadel.
+</p>
+
+<div class="divider">✦</div>
+
+<p style="font-family:'Cinzel',serif;font-size:13px;">
+OUR STORY IS MY FAVORITE MAGIC.
+</p>
+
+</div>
+
+</div>
+
+<div class="center" style="margin-top:25px;">
+<button class="main-button" onclick="showPage('home')">
+RETURN TO OUR STORY ♡
+</button>
+</div>
+
+</div>
 </section>
 
+
 <script>
+
+/* PASSWORD */
+
 const SECRET_PASSWORD = "260626";
 
 function unlock() {
@@ -572,7 +783,7 @@ function unlock() {
   if (password === SECRET_PASSWORD) {
     showPage("home");
   } else {
-    error.textContent = "Oops! That's not our special date. Try again, love ❤️";
+    error.textContent = "The spell is incorrect. Try again, my love.";
   }
 }
 
@@ -581,6 +792,9 @@ document.getElementById("password").addEventListener("keydown", function(event) 
     unlock();
   }
 });
+
+
+/* PAGE NAVIGATION */
 
 function showPage(pageId) {
   document.querySelectorAll(".page").forEach(function(page) {
@@ -595,27 +809,27 @@ function showPage(pageId) {
   }
 }
 
-// Floating hearts
-function createHeart() {
-  const heart = document.createElement("div");
 
-  heart.className = "heart";
-  heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
+/* MAGICAL STARS */
 
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (12 + Math.random() * 18) + "px";
-  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+const magic = document.getElementById("magic");
 
-  document.body.appendChild(heart);
+for (let i = 0; i < 55; i++) {
+  const star = document.createElement("span");
 
-  setTimeout(function() {
-    heart.remove();
-  }, 8000);
+  star.className = "star";
+  star.textContent = Math.random() > .5 ? "✦" : "✧";
+
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.fontSize = (8 + Math.random() * 13) + "px";
+  star.style.animationDelay = Math.random() * 4 + "s";
+  star.style.animationDuration = (2 + Math.random() * 4) + "s";
+
+  magic.appendChild(star);
 }
 
-setInterval(createHeart, 700);
 </script>
 
 </body>
-  </html>
-  
+</html>

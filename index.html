@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -28,8 +29,12 @@
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse at top, #263751 0%, #101a2d 40%, #080d19 100%);
+  background: radial-gradient(
+    ellipse at top,
+    #263751 0%,
+    #101a2d 40%,
+    #080d19 100%
+  );
   color: #f2e6c9;
   font-family: 'Cormorant Garamond', serif;
   overflow-x: hidden;
@@ -162,8 +167,11 @@ p {
 /* CARDS */
 
 .card {
-  background:
-    linear-gradient(145deg, rgba(34,48,68,.92), rgba(13,21,35,.95));
+  background: linear-gradient(
+    145deg,
+    rgba(34,48,68,.92),
+    rgba(13,21,35,.95)
+  );
   border: 1px solid #c7a75c66;
   border-radius: 5px;
   padding: 28px;
@@ -290,8 +298,10 @@ input {
 /* LETTER PAPER */
 
 .parchment {
-  background:
-    linear-gradient(rgba(240,222,182,.96), rgba(224,201,157,.96));
+  background: linear-gradient(
+    rgba(240,222,182,.96),
+    rgba(224,201,157,.96)
+  );
   color: var(--ink);
   padding: 35px;
   border: 8px double #947343;
@@ -370,6 +380,40 @@ input {
   transform: scale(1.04) rotate(1deg);
 }
 
+/* MUSIC PLAYER */
+
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.music-button {
+  background: linear-gradient(135deg, #b68b45, #e5ca85);
+  color: #201a12;
+  border: 1px solid #f3dda0;
+  border-radius: 30px;
+  padding: 12px 19px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 20px #0008;
+}
+
+.music-button:hover {
+  transform: scale(1.05);
+}
+
+.music-status {
+  color: #f0d99b;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px;
+  font-family: 'Cinzel', serif;
+}
+
 /* FOOTER */
 
 footer {
@@ -397,6 +441,11 @@ footer {
   .card {
     padding: 23px;
   }
+
+  .music-player {
+    bottom: 12px;
+    right: 12px;
+  }
 }
 </style>
 </head>
@@ -404,6 +453,21 @@ footer {
 <body>
 
 <div id="magic"></div>
+
+<!-- BACKGROUND MUSIC -->
+
+<audio id="backgroundMusic" loop preload="auto">
+  <source src="music/perfect.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-player">
+  <button class="music-button" onclick="toggleMusic()" id="musicButton">
+    ♫ MUSIC OFF
+  </button>
+  <div class="music-status" id="musicStatus">
+    Hogwarts Melody
+  </div>
+</div>
 
 <!-- LOGIN -->
 
@@ -446,7 +510,6 @@ OPEN THE LETTER ✦
 
 </div>
 </section>
-
 
 <!-- HOME -->
 
@@ -515,7 +578,6 @@ BREAK THE SEAL 💌
 </div>
 </section>
 
-
 <!-- BIRTHDAY -->
 
 <section id="birthday" class="page">
@@ -567,10 +629,8 @@ I love you, birthday girl. ❤️
 <p class="signature">With all my love, Fadel ♡</p>
 
 </div>
-
 </div>
 </section>
-
 
 <!-- ANNIVERSARY -->
 
@@ -637,7 +697,6 @@ I still choose you, Cila. Today, tomorrow, and every day after that. ❤️
 </div>
 </section>
 
-
 <!-- SEMPRO -->
 
 <section id="sempro" class="page">
@@ -693,7 +752,6 @@ I'm so proud of you, Cila. ❤️
 </div>
 </div>
 </section>
-
 
 <!-- FINAL LETTER -->
 
@@ -757,7 +815,6 @@ OUR STORY IS MY FAVORITE MAGIC.
 </p>
 
 </div>
-
 </div>
 
 <div class="center" style="margin-top:25px;">
@@ -768,7 +825,6 @@ RETURN TO OUR STORY ♡
 
 </div>
 </section>
-
 
 <script>
 
@@ -782,6 +838,10 @@ function unlock() {
 
   if (password === SECRET_PASSWORD) {
     showPage("home");
+
+    // Start music after user interaction
+    playMusic();
+
   } else {
     error.textContent = "The spell is incorrect. Try again, my love.";
   }
@@ -792,7 +852,6 @@ document.getElementById("password").addEventListener("keydown", function(event) 
     unlock();
   }
 });
-
 
 /* PAGE NAVIGATION */
 
@@ -809,6 +868,33 @@ function showPage(pageId) {
   }
 }
 
+/* MUSIC PLAYER */
+
+const music = document.getElementById("backgroundMusic");
+const musicButton = document.getElementById("musicButton");
+const musicStatus = document.getElementById("musicStatus");
+
+music.volume = 0.45;
+
+function playMusic() {
+  music.play().then(function() {
+    musicButton.textContent = "♫ MUSIC ON";
+    musicStatus.textContent = "Now Playing · Perfect ♡";
+  }).catch(function() {
+    musicButton.textContent = "♫ PLAY MUSIC";
+    musicStatus.textContent = "Tap to start the music";
+  });
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    playMusic();
+  } else {
+    music.pause();
+    musicButton.textContent = "♫ MUSIC OFF";
+    musicStatus.textContent = "Music Paused";
+  }
+}
 
 /* MAGICAL STARS */
 

@@ -1,1 +1,621 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Beloved, Cila ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --dark: #19080e;
+  --maroon: #4b1025;
+  --wine: #701b38;
+  --pink: #d99aaa;
+  --cream: #fff0e9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #19080e, #35101f, #57182f);
+  color: var(--cream);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 35px 18px;
+  animation: appear .7s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-size: clamp(34px, 7vw, 55px);
+  color: #f4c6d2;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: #f4c6d2;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.9;
+  font-size: 14px;
+  color: #f7e5e8;
+}
+
+.small {
+  font-size: 12px;
+  color: #dbaab9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,210,225,.17);
+  border-radius: 22px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+}
+
+.main-button {
+  background: linear-gradient(135deg, #d99aaa, #a94c6a);
+  color: #260b15;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  margin: 8px 5px;
+  transition: .3s;
+}
+
+.main-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px #d99aaa44;
+}
+
+.back-button {
+  background: transparent;
+  color: #f4c6d2;
+  border: 1px solid #d99aaa;
+  padding: 9px 18px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+}
+
+input {
+  width: 100%;
+  max-width: 300px;
+  padding: 14px;
+  border-radius: 30px;
+  border: 1px solid #d99aaa;
+  background: #fff0e9;
+  color: #35101f;
+  text-align: center;
+  outline: none;
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin: 18px 0 10px;
+}
+
+.hero {
+  padding-top: 12vh;
+}
+
+.hero-image {
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #d99aaa;
+  margin: 25px auto;
+  display: block;
+  box-shadow: 0 0 30px #d99aaa55;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 17px;
+  margin-top: 30px;
+}
+
+.menu-card {
+  text-align: left;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,.12);
+}
+
+.menu-card h3 {
+  color: #f4c6d2;
+  font-size: 23px;
+  margin-bottom: 9px;
+}
+
+.menu-card .emoji {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.section-photo {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 20px 0;
+  border: 1px solid #d99aaa66;
+}
+
+.story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, .75fr);
+  gap: 22px;
+  align-items: center;
+}
+
+.story-layout img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid #d99aaa66;
+}
+
+.message {
+  white-space: pre-line;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #d99aaa77;
+  transition: .3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+}
+
+.signature {
+  color: #f4b9ca;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  margin-top: 25px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  color: #e99ab2;
+  pointer-events: none;
+  animation: floatUp 6s linear forwards;
+  z-index: 10;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 35px 10px 10px;
+  color: #dbaab9;
+  font-size: 11px;
+}
+
+@media(max-width: 600px) {
+  .story-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .story-layout img {
+    height: 300px;
+  }
+
+  .page {
+    padding: 25px 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<section id="login" class="page active">
+  <div class="container center hero">
+    <p class="small">A little surprise for someone special</p>
+    <h1>For My Beloved, Cila</h1>
+
+    <img class="hero-image" src="images/cila.jpg" alt="Cila">
+
+    <div class="card">
+      <h2>Welcome, My Love ♡</h2>
+      <p>
+        I made something special just for you.
+        But before you enter, there's one little secret
+        you need to know.
+      </p>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter our secret date"
+        maxlength="6"
+        inputmode="numeric"
+      >
+
+      <br>
+
+      <button class="main-button" onclick="unlock()">
+        Open My Heart ❤️
+      </button>
+
+      <p id="error" style="color:#ff9aaa;margin-top:10px;"></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOME PAGE -->
+<section id="home" class="page">
+  <div class="container">
+    <div class="center" style="padding-top:35px;">
+      <p class="small">To the girl who makes my world beautiful</p>
+      <h1>Hello, My Cila ♡</h1>
+      <p>
+        There are a thousand things I want to tell you.
+        So I made this little place to keep some of them.
+      </p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="card menu-card" onclick="showPage('birthday')">
+        <div class="emoji">🎂</div>
+        <h3>Happy Birthday</h3>
+        <p>A special letter for your special day.</p>
+      </div>
+
+      <div class="card menu-card" onclick="showPage('anniversary')">
+        <div class="emoji">❤️</div>
+        <h3>Our 4th Month</h3>
+        <p>Four months of us, and many more to come.</p>
+      </div>
+
+      <div class="card menu-card" onclick="showPage('sempro')">
+        <div class="emoji">🎓</div>
+        <h3>Congratulations!</h3>
+        <p>A little appreciation for your hard work.</p>
+      </div>
+    </div>
+
+    <div class="card center" style="margin-top:20px;">
+      <p class="small">One more thing...</p>
+      <h2>A Letter From Me</h2>
+      <p>
+        There's something I haven't said enough.
+        Maybe you should open this one too.
+      </p>
+      <button class="main-button" onclick="showPage('final')">
+        Open My Last Letter 💌
+      </button>
+    </div>
+
+    <footer>Made with love, just for you ♡</footer>
+  </div>
+</section>
+
+<!-- BIRTHDAY PAGE -->
+<section id="birthday" class="page">
+  <div class="container">
+    <button class="back-button" onclick="showPage('home')">← Back</button>
+
+    <div class="center">
+      <p class="small">19 October 2004</p>
+      <h1>Happy Early Birthday!</h1>
+      <p>To the most beautiful girl in my world. ♡</p>
+    </div>
+
+    <div class="card" style="margin-top:25px;">
+      <div class="story-layout">
+        <div>
+          <h2>For You, Cila</h2>
+          <p class="message">
+Happy birthday in advance, my love!
+
+I know your birthday hasn't arrived yet, but I wanted to give you this little surprise before I leave on October 16.
+
+I may not be right beside you when October 19 finally comes, but I don't want that to stop me from making you feel special.
+
+Thank you for being here. Thank you for your smile, your little habits, your laughter, and even the things you probably don't realize make me fall for you.
+
+I hope this new chapter brings you happiness, good health, beautiful opportunities, and everything you've been praying for.
+
+Never doubt how special you are. You deserve so much love, and I hope I can keep giving you a reason to smile.
+
+Keep growing, keep shining, and never stop believing in yourself.
+
+I love you, birthday girl. ❤️
+          </p>
+        </div>
+
+        <img src="images/cila.jpg" alt="My birthday girl">
+      </div>
+    </div>
+
+    <div class="center">
+      <p class="signature">With all my love, Fadel ♡</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANNIVERSARY PAGE -->
+<section id="anniversary" class="page">
+  <div class="container">
+    <button class="back-button" onclick="showPage('home')">← Back</button>
+
+    <div class="center">
+      <p class="small">26 June 2026 — Our Beginning</p>
+      <h1>Happy 4 Months, My Love</h1>
+      <p>Four months, one beautiful story, and two hearts.</p>
+    </div>
+
+    <div class="card" style="margin-top:25px;">
+      <img class="section-photo" src="images/anniversary.jpg" alt="Our memory">
+
+      <h2>Four Months of Us</h2>
+
+      <p class="message">
+Happy fourth month anniversary, Cila!
+
+It's crazy how four months can hold so many memories, little moments, laughter, and feelings that are difficult to put into words.
+
+I know we're not perfect. Sometimes we might misunderstand each other, have different opinions, or face difficult days. But I hope we always choose to understand each other instead of giving up.
+
+I don't just want to be with you on the happy days. I want to be someone who stays when things get difficult, someone you can talk to, laugh with, and feel safe around.
+
+Thank you for choosing me and allowing me to be part of your life.
+
+Four months down, hopefully a lifetime to go.
+
+I still choose you, Cila. Today, tomorrow, and every day after that. ❤️
+      </p>
+
+      <div class="center">
+        <p class="signature">You are still my favorite person.</p>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:30px;">
+      <h2>Our Little Memories 📸</h2>
+      <p>Some moments that I never want to forget.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="images/bucin1.jpg" alt="Our memory 1">
+      <img src="images/bucin2.jpg" alt="Our memory 2">
+      <img src="images/bucin3.jpg" alt="Our memory 3">
+      <img src="images/bucin4.jpg" alt="Our memory 4">
+      <img src="images/bucin5.jpg" alt="Our memory 5">
+    </div>
+
+    <div class="center">
+      <p class="signature">Forever grateful for us. ♡</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEMPRO PAGE -->
+<section id="sempro" class="page">
+  <div class="container">
+    <button class="back-button" onclick="showPage('home')">← Back</button>
+
+    <div class="center">
+      <p class="small">A new achievement unlocked</p>
+      <h1>Congratulations, My Girl! 🎓</h1>
+      <p>You did it, and I'm so proud of you.</p>
+    </div>
+
+    <div class="card" style="margin-top:25px;">
+      <div class="story-layout">
+        <div>
+          <h2>You Deserve This!</h2>
+          <p class="message">
+Congratulations on your seminar proposal, Cila!
+
+I know this journey hasn't always been easy. There were probably moments when you felt tired, overwhelmed, or even doubted yourself.
+
+But look at you now. You made it through another important step!
+
+I'm genuinely proud of you. Not only because of this achievement, but also because of all the effort, patience, and courage you put into getting here.
+
+I hope this is just the beginning of many more achievements waiting for you.
+
+Don't be too hard on yourself. Take a moment to appreciate how far you've come.
+
+Keep going, my love. I'll always be cheering for you, even from a distance.
+
+You did amazing, and you deserve to celebrate this moment.
+
+I'm so proud of you, Cila. ❤️
+          </p>
+        </div>
+
+        <img src="images/sempro.jpg" alt="Cila's achievement">
+      </div>
+    </div>
+
+    <div class="center">
+      <p class="signature">Your number one supporter, Fadel ♡</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL LETTER -->
+<section id="final" class="page">
+  <div class="container">
+    <button class="back-button" onclick="showPage('home')">← Back</button>
+
+    <div class="center">
+      <p class="small">A letter from the bottom of my heart</p>
+      <h1>Before You Go...</h1>
+    </div>
+
+    <div class="card" style="margin-top:25px;">
+      <img class="section-photo" src="images/anniversary.jpg" alt="Us together">
+
+      <h2>To My Cila,</h2>
+
+      <p class="message">
+I don't know how many times I've told you that I love you, but I hope you never get tired of hearing it.
+
+I know I can't promise that every day will be perfect. I can't promise that we'll never argue or that everything will always go according to plan.
+
+But I can promise that I'll keep trying. I'll keep learning how to love you better, understand you more, and appreciate every little thing about you.
+
+I hope we get to create more memories, visit more places, take more pictures, laugh at silly things, and celebrate many more milestones together.
+
+If there's one thing I want you to remember, it's this:
+
+You are loved. You are appreciated. And you mean more to me than words can explain.
+
+Thank you for being my favorite part of this story.
+
+No matter how far life takes us, I hope we never stop choosing each other.
+      </p>
+
+      <div class="center">
+        <img class="hero-image" src="images/cila.jpg" alt="Cila">
+
+        <h2 style="margin-top:25px;">CilaMyForever ❤️</h2>
+
+        <p class="signature">
+          I love you, my girl until the end of my life.
+        </p>
+
+        <p style="margin-top:15px;">— Your future, Fadel.</p>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:25px;">
+      <button class="main-button" onclick="showPage('home')">
+        Back to Our Memories ♡
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+const SECRET_PASSWORD = "260626";
+
+function unlock() {
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+
+  if (password === SECRET_PASSWORD) {
+    showPage("home");
+  } else {
+    error.textContent = "Oops! That's not our special date. Try again, love ❤️";
+  }
+}
+
+document.getElementById("password").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    unlock();
+  }
+});
+
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
+  });
+
+  const selectedPage = document.getElementById(pageId);
+
+  if (selectedPage) {
+    selectedPage.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+  heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (12 + Math.random() * 18) + "px";
+  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(function() {
+    heart.remove();
+  }, 8000);
+}
+
+setInterval(createHeart, 700);
+</script>
+
+</body>
+  </html>
+  
